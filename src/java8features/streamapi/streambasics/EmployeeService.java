@@ -1,6 +1,7 @@
 package java8features.streamapi.streambasics;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,4 +74,40 @@ public static List<Employee> getEmployee(){
 		return employees.stream().map(Employee::getEname).toList();
 	}
 
+	public double averageSalary() {
+		List<Employee> employees = EmployeeService.getEmployee();
+		
+		return employees.stream().mapToDouble(Employee::getSalary).average().getAsDouble();
+		
+	}
+	
+	public boolean checkSalary() {
+		List<Employee> employees = EmployeeService.getEmployee();
+		
+		boolean salary = employees.stream().allMatch(e->e.getSalary()>5000);
+		return salary;
+	}
+	
+	public void primitiveToString() {
+		List<Integer> intsList = Arrays.asList(10,33,20,50,40,80);
+		
+		intsList.stream().map(String::valueOf).forEach(System.out::println);
+	}
+
+	public void findStringLength() {
+		List<String> strList = Arrays.asList("Seema","Damini","leena","sanjana","divya");
+		
+		strList.stream().map(String::length).forEach(System.out::println);
+	}
+	
+	public void flatMap() {
+		List<Integer> lst1  = Arrays.asList(10,20,30);
+		List<Integer> lst2 = Arrays.asList(40,50,60);
+		
+		List<List<Integer>> lst3 = Arrays.asList(lst1, lst2);
+		
+		List<Integer> lst4 = lst3.stream().flatMap(e->e.stream()).toList();
+		System.out.println(lst4);
+		
+	}
 }
