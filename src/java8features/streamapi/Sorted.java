@@ -1,4 +1,4 @@
-package java8features.streamapi.differentSortedParameter;
+package java8features.streamapi;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -32,7 +32,6 @@ public class Sorted {
 		System.out.println("*".repeat(15));
 		
 		System.out.println("Using sorted(String.CASE_INSENSITIVE_ORDER) : it's ignore the upperCase/Lowercase ");
-
 		Sorted.sortedwithCaseInsensitiveOrder();
 		System.out.println("*".repeat(15));
 		
